@@ -1,3 +1,6 @@
+Vers. 0.21	2011-Jan-26
+	- Placed second argument on ftok call at POSIX.pm 
+
 Vers. 0.20	2011-Jan-19		A. Douitsis
 	- Fixed 03multiproc.t. When forking, inherited flock was the same for all child and parent. Re-opening file after fork  fixes that bug.
 	- Fixed semaphore exhaustion after several tests. Removed IPC_PRIVATE, now using ftok and a (real,readable) file to generate unique semid

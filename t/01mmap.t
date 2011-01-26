@@ -4,7 +4,7 @@
 use vars qw($tests $loaded);
 BEGIN {
 	push @INC, './t';
-	$tests = 32;
+	$tests = 37;
 
 	$^W= 1;
 	$| = 1;
@@ -174,9 +174,13 @@ report_result(defined($result) && ($result == 36), 'pack()');
 #	then unpack it
 #
 my @vals = $mmap->unpack(1000, 36, 'l n S d a20');
-report_result((scalar @vals == 5) &&
-	($vals[0] == 123456) && ($vals[1] == 2345) && ($vals[2] == 5432) &&
-	($vals[3] == 123.456789) && ($vals[4] eq ('Z' x 20)), 'unpack()');
+report_result(scalar @vals == 5, 'got 5 values back');
+report_result($vals[0] == 123456 , '1st value correct');
+report_result($vals[1] == 2345 , '2nd value correct');
+report_result($vals[2] == 5432 , '3rd value correct');
+report_result($vals[3] == 123.456789 , '4th value correct');
+report_result($vals[4] eq ('Z' x 20) , '5th value correct');
+
 #
 #	unlock it
 #

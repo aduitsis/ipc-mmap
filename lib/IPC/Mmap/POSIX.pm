@@ -39,7 +39,7 @@ use Data::Dumper;
 #use constant PROT_READ  => constant('PROT_READ', 0);
 #use constant PROT_WRITE => constant('PROT_WRITE', 0);
 
-our $VERSION = '0.2';
+our $VERSION = '0.21';
 #/**
 # Constructor. mmap()'s using POSIX mmap().
 #
@@ -69,7 +69,7 @@ sub new {
 			croak "For anonymous mmap, you must provide an readable filename in order for the ftok(3) to return a valid unique id. Unfortunately $file doesn't seem to be readable. ";
 		}
 
-		my $unique_id = IPC::SysV::ftok($file);
+		my $unique_id = IPC::SysV::ftok($file,1);
 		
 		#create a brand new semaphore 
 		my $sem = new IPC::Semaphore($unique_id, 1, 0666|IPC_CREAT) or croak "Cannot create semaphore:$!";
