@@ -178,7 +178,7 @@ report_result(scalar @vals == 5, 'got 5 values back');
 report_result($vals[0] == 123456 , '1st value correct');
 report_result($vals[1] == 2345 , '2nd value correct');
 report_result($vals[2] == 5432 , '3rd value correct');
-report_result($vals[3] == 123.456789 , '4th value correct');
+report_result( abs($vals[3] - 123.456789) < 0.001  , '4th value correct');
 report_result($vals[4] eq ('Z' x 20) , '5th value correct');
 
 #

@@ -26,7 +26,7 @@ use IPC::Mmap qw(MAP_ANON MAP_ANONYMOUS MAP_FILE MAP_PRIVATE MAP_SHARED
 	PROT_READ PROT_WRITE);
 use base qw(IPC::Mmap);
 
-our $VERSION = '0.11';
+our $VERSION = '0.22_02';
 
 #/**
 # Constructor. mmap()'s using Win32::MMF::UseNameSpace,

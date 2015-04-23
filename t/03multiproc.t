@@ -126,7 +126,8 @@ sub read_mmap {
 	my @vals = $mmap->unpack(1000, 36, 'l n S d a20');
 	report_result((scalar @vals == 5) &&
 		($vals[0] == 123456) && ($vals[1] == 2345) && ($vals[2] == 5432) &&
-		($vals[3] == 123.456789) && ($vals[4] eq ('Z' x 20)), 'unpack()');
+		( abs($vals[3] - 123.456789) < 0.0001 ) && ($vals[4] eq ('Z' x 20)), 'unpack()');
+	#### print $vals[0].' '.$vals[1].' '.$vals[2].' '.$vals[3]."\n";
 	$mmap->unlock();
 
 	return 1;

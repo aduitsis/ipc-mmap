@@ -39,7 +39,7 @@ use Data::Dumper;
 #use constant PROT_READ  => constant('PROT_READ', 0);
 #use constant PROT_WRITE => constant('PROT_WRITE', 0);
 
-our $VERSION = '0.21';
+our $VERSION = '0.22_02';
 #/**
 # Constructor. mmap()'s using POSIX mmap().
 #
