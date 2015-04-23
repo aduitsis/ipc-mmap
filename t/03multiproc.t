@@ -77,7 +77,7 @@ unless (defined($mmap)) {
 #	create 2 threads; 1st writes, 2nd reads
 #	lock the mmap first to control sequencing
 #
-$mmap->lock();
+#$mmap->lock();
 my $writer = fork();
 
 die "Can't fork writer" unless defined($writer);
@@ -87,7 +87,7 @@ unless ($writer) {
 	exit 1;
 }
 
-$mmap->unlock();
+#$mmap->unlock();
 
 #race condition - will the writer be always faster than the reader?
 #let's give it a little time, say 10milliseconds
@@ -106,6 +106,7 @@ waitpid($writer, 0);
 waitpid($reader, 0);
 
 sub read_mmap {
+	
 	my $mmap = create_mmap;
 	$mmap->lock();
 	my $value;
@@ -117,7 +118,7 @@ sub read_mmap {
 			' value: ' . substr($value, 0, 20) );
 	$mmap->unlock();
 
-	sleep 3;
+	sleep 8;
 #
 #	unpack something
 #
@@ -140,7 +141,7 @@ sub write_mmap {
 	$result = $mmap->write('K' x 2000, 100);
 	$result = $mmap->unlock();
 
-	sleep 2;
+	sleep 4;
 #
 #	pack something
 #

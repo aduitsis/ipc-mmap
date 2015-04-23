@@ -43,7 +43,7 @@ my %opts = (
      	'SUFFIX'       => 'gz',
 	 	'COMPRESS'     => 'gzip -9vf'
     },
-	'AUTHOR'       => 'Dean Arnold, Presicient Corp. (darnold@presicient.com)',
+	'AUTHOR'       => [ 'Dean Arnold, Presicient Corp. (darnold@presicient.com)', 'Athanasios Douitsis (aduitsis@cpan.org)', ],
 	'ABSTRACT'     => 'minimal unified mmap for POSIX and Win32',
 	'PREREQ_PM'    => \%prereqs
 );
